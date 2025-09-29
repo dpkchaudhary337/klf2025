@@ -3,7 +3,6 @@ import { CountDownTimer } from "./CountDownTimer";
 import { DisplayPage } from "./DisplayPage";
 import { GalleryPreview2024 } from "../Gallery/GalleryPreview2024";
 import SpeakersPreview2025 from "../Speakers/SpeakersPreview2025";
-import { InstagramReels } from "./InstagramReel";
 import { MediaPreview2025 } from "../NewsMedia/MediaPreview2025";
 import { PartnersPreview2025 } from "../Partners/PartnersPreview2025";
 import leafsBg from "../../assets/klfBg.png";
@@ -11,6 +10,7 @@ import { useEffect } from "react";
 import Performances2025 from "../Performance/Performances2025";
 import PodcastPreview2025 from "../Podcast/PodcastPreview2025";
 import { BooksPreview2025 } from "../Books/BooksPreview2025";
+import ActivityPreview2025 from "../Activity/ActivityPreview2025";
 
 export function Hero() {
 
@@ -35,7 +35,7 @@ export function Hero() {
       {/* Scrolling Content */}
       <div className="relative z-10">
         <DisplayPage />
-        <CountDownTimer />
+       
         <AboutKLF />
         <div className="">
           <SpeakersPreview2025 />
@@ -52,14 +52,15 @@ export function Hero() {
         <div className="">
           <BooksPreview2025 />
         </div>
-        <div className="">
-          <InstagramReels />
-        </div>
+       
         <div className="">
           <PodcastPreview2025 />
         </div>
         <div className="">
           <MediaPreview2025 />
+        </div>
+        <div className="">
+          <ActivityPreview2025 />
         </div>
       </div>
     </div>

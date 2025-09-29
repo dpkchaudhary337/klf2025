@@ -36,12 +36,7 @@ export default function Highlights2024() {
         </div>
       </div>
 
-      {/* Decorative Background GIF */}
-      <img
-        src={flowerPoppy}
-        alt="flower animation"
-        className="absolute left-[20%] top-[60%] w-20 opacity-90 pointer-events-none animate-slow-spin"
-      />
+     
     </section>
   );
 }

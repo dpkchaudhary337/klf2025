@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import leftLeave from "../../assets/leftLeaves.png";
 import rightLeave from "../../assets/rightLeaves.png";
+import flowerPoppy from "../../assets/Poppy-8.png";
 
 export const CountDownTimer = () => {
   const calculateTimeLeft = () => {
@@ -33,9 +34,9 @@ export const CountDownTimer = () => {
     <div className="relative flex justify-center items-center py-10 px-4 bg-gradient-to-r from-[#fdf6f0] to-[#fff]">
       {/* Left Leaf */}
       <img
-        src={leftLeave}
-        alt="Leaf"
-        className="w-14 h-20 md:w-24 md:h-32 absolute left-2 md:left-8"
+        src={flowerPoppy}
+        alt="flower animation"
+        className="absolute left-[15%] top-[35%] w-20 opacity-90 pointer-events-none animate-slow-spin"
       />
 
       {/* Main Content */}
@@ -65,9 +66,9 @@ export const CountDownTimer = () => {
 
       {/* Right Leaf */}
       <img
-        src={rightLeave}
-        alt="Leaf"
-        className="w-14 h-20 md:w-24 md:h-32 absolute right-2 md:right-8"
+        src={flowerPoppy}
+        alt="flower animation"
+        className="absolute left-[80%] top-[35%] w-20 opacity-90 pointer-events-none animate-slow-spin"
       />
     </div>
   );

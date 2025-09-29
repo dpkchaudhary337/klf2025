@@ -9,11 +9,9 @@ const Speakers2025 = () => {
     <div className="bg-gray-50 py-16 px-6">
       <div className="text-center mb-12">
         <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
-          Expected Speakers KLF 2025
+          Attending Speakers KLF 2025
         </h2>
-        <p className="mt-3 text-lg text-gray-600">
-          Browse through inspiring voices from KLF
-        </p>
+       
       </div>
 
       {/* Speakers Grid */}

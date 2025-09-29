@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import jsPDF from "jspdf";
 
 // ✅ Base URL from .env
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-console.log("🌐 API_BASE_URL:", API_BASE_URL);
 
 export default function PaymentSuccess() {
   const location = useLocation();
@@ -17,12 +17,8 @@ export default function PaymentSuccess() {
       fetch(`${API_BASE_URL}/get_booking.php?booking_id=${bookingId}`)
         .then(async (res) => {
           const text = await res.text();
-          console.log("📥 Raw Response:", text);
-
           try {
             const data = JSON.parse(text);
-            console.log("✅ Parsed JSON:", data);
-
             if (data.status === "success") {
               setBookingDetails(data.booking);
               setAttendees(data.attendees || []);
@@ -30,14 +26,10 @@ export default function PaymentSuccess() {
               setError("Booking not found or invalid response.");
             }
           } catch (err) {
-            console.error("❌ JSON Parse Error:", err);
             setError("Server returned invalid JSON. Check API.");
           }
         })
-        .catch((err) => {
-          console.error("⚠️ Fetch Error:", err);
-          setError("Failed to fetch booking details.");
-        });
+        .catch(() => setError("Failed to fetch booking details."));
     }
   }, [bookingId]);
 
@@ -56,6 +48,90 @@ export default function PaymentSuccess() {
       </div>
     );
   }
+
+  // Function to generate PDF
+const downloadPDF = () => {
+  const doc = new jsPDF("p", "pt", "a4");
+  let y = 40; // starting Y position
+
+  // Payment Successful
+  doc.setFontSize(22);
+  doc.setTextColor(0, 128, 0);
+  doc.text("Payment Successful!", 40, y);
+  y += 40; // margin added
+
+  // Thank you line
+  doc.setFontSize(16);
+  doc.setTextColor(0, 0, 0);
+  doc.text("Thank you for booking your ticket to:", 40, y);
+  y += 30; // margin added
+
+  // Event Name
+  doc.setFontSize(18);
+  doc.setFont(undefined, "bold");
+  doc.text("Kashmir Literature Festival 2025", 40, y);
+  y += 40; // margin added
+
+  // Event Date & Venue
+  doc.setFontSize(14);
+  doc.setFont(undefined, "normal");
+  doc.text("11th & 12th October", 40, y);
+  y += 18;
+  doc.text("Dal Lake Front, SKICC, Srinagar", 40, y);
+  y += 35; // margin added before booking details
+
+  // Booking Details Heading
+  doc.setFontSize(16);
+  doc.setFont(undefined, "bold");
+  doc.text("Your Booking Details:", 40, y);
+  y += 25;
+
+  // Booking Details
+  doc.setFontSize(14);
+  doc.setFont(undefined, "normal");
+  doc.text(`Booking ID: ${bookingDetails.booking_id}`, 40, y);
+  y += 18;
+  doc.text(`Name: ${bookingDetails.name}`, 40, y);
+  y += 18;
+  doc.text(`Email: ${bookingDetails.email}`, 40, y);
+  y += 18;
+  doc.text(`Package: ${bookingDetails.package_type}`, 40, y);
+  y += 18;
+
+  // Amount Paid in Bold
+  doc.setFont(undefined, "bold");
+  doc.text(`Amount Paid: Rs. ${bookingDetails.amount}`, 40, y);
+  y += 25;
+
+  // Attendees
+  if (attendees.length > 0) {
+    doc.setFont(undefined, "bold");
+    doc.text("Ticket Holders:", 40, y);
+    y += 20;
+    doc.setFont(undefined, "normal");
+
+    attendees.forEach((attendee, index) => {
+      doc.text(
+        `#${index + 1} - ${attendee.name}${attendee.email ? ` (${attendee.email})` : ""}`,
+        40,
+        y
+      );
+      y += 18;
+    });
+  }
+
+  y += 20;
+  doc.setFont(undefined, "bold");
+  doc.setTextColor(0, 128, 0);
+  doc.text(
+    "A confirmation mail has been sent to your registered email.",
+    40,
+    y
+  );
+
+  doc.save(`Booking_${bookingDetails.booking_id}.pdf`);
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-6">
@@ -128,9 +204,17 @@ export default function PaymentSuccess() {
           📩 A confirmation mail has been sent to your registered email.
         </p>
 
+        {/* PDF Download Button */}
+        <button
+          onClick={downloadPDF}
+          className="mt-6 bg-purple-600 text-white px-6 py-2 rounded-xl shadow hover:bg-purple-700 transition"
+        >
+          Download PDF
+        </button>
+
         <button
           onClick={() => (window.location.href = "/")}
-          className="mt-8 bg-green-600 text-white px-6 py-2 rounded-xl shadow hover:bg-green-700 transition"
+          className="mt-4 ml-4 bg-green-600 text-white px-6 py-2 rounded-xl shadow hover:bg-green-700 transition"
         >
           Go to Home
         </button>

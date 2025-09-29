@@ -97,7 +97,7 @@ export const PartnersPreview2024 = () => {
       <div className="text-center mt-10">
         <Link
           to="/partners/2024"
-          className="px-6 py-2 bg-[#D86B27] text-white rounded-lg shadow hover:bg-[#b8551f] transition"
+          className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"
         >
           View All Partners
         </Link>

@@ -1,28 +1,31 @@
-import TheRaavya from "../../assets/Podcast/2025/TheRaavya.png";
-import BeingLogical from "../../assets/Podcast/2025/BeingLogical.png";
-import AwaaraMusafir from "../../assets/Podcast/2025/AwaaraMusafir.png";
+import podcast from "../../assets/Activity/2025/podcast.png";
+import quiz from "../../assets/Activity/2025/quiz.png";
+import poetry from "../../assets/Activity/2025/poetry.png";
+import combat from "../../assets/Activity/2025/combat.png";
 import flowerPoppy from "../../assets/Sunflower-8.png";
 
-const PodcastPreview2025 = () => {
-  // Card data with links
+const ActivityPreview2025 = () => {
+  // Card data
   const cards = [
     {
-      imageSrc: TheRaavya,
-      title: "The Raavya Sarda Show",
+      imageSrc: podcast,
+      title: "KLF Exclusive Podcasts",
       description: "",
-      link: "https://www.youtube.com/@raavyasarda/podcasts",
     },
     {
-      imageSrc: BeingLogical,
-      title: "Being Logical With Amber",
+      imageSrc: quiz,
+      title: "Quiz competitions",
       description: "",
-      link: "https://www.youtube.com/@AmberZaidiOfficial/podcasts",
     },
     {
-      imageSrc: AwaaraMusafir,
-      title: "Awaara Musafir Show",
+      imageSrc: poetry,
+      title: "⁠⁠Poetry & stories",
       description: "",
-      link: "https://www.youtube.com/@AwaaraMusaafir/podcasts",
+    },
+    {
+      imageSrc: combat,
+      title: "⁠⁠Combat performances",
+      description: "",
     },
   ];
 
@@ -35,15 +38,16 @@ const PodcastPreview2025 = () => {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="inline-block text-2xl lg:text-3xl px-6 py-3 font-bold rounded-md">
-            Podcast Partners KLF 25
+            Extra Activities KLF 25
           </h2>
           <p className="mt-4 text-lg md:text-xl font-medium">
-            Voices that Inspire
+            Unfolding Expressions Beyond Literature
           </p>
+         
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           {cards.map((card, index) => (
             <div
               key={index}
@@ -51,11 +55,11 @@ const PodcastPreview2025 = () => {
               transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
             >
               {/* Image wrapper with fixed aspect ratio */}
-              <div className="relative w-full aspect-[9/9] overflow-hidden">
+              <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <img
                   src={card.imageSrc}
                   alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-110"
                 />
               </div>
 
@@ -65,16 +69,6 @@ const PodcastPreview2025 = () => {
                   {card.title}
                 </h3>
                 <p className="text-sm text-gray-600 mt-2">{card.description}</p>
-
-                {/* Link Button */}
-                <a
-                  href={card.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white text-sm font-medium px-5 py-2 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
-                >
-                  🎧 Listen Now
-                </a>
               </div>
             </div>
           ))}
@@ -84,4 +78,4 @@ const PodcastPreview2025 = () => {
   );
 };
 
-export default PodcastPreview2025;
+export default ActivityPreview2025;

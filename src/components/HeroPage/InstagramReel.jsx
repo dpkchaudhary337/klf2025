@@ -45,7 +45,7 @@ export const InstagramReels = () => {
     >
       {/* Heading Section */}
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-black">Instagram</h2>
+        <h2 className="text-4xl font-bold text-black">Social Updates KLF 2025</h2>
         <p className="text-lg text-black mt-3">
           Stay updated with our latest stories, trends, and behind-the-scenes moments
         </p>

@@ -6,6 +6,7 @@ import Highlights2024 from "./Highlights2024";
 import { GalleryPreview2024 } from "../Gallery/GalleryPreview2024";
 import { MediaPreview2024 } from "../NewsMedia/MediaPreview2024";
 import Performances2024 from "../Performance/Performances2024";
+import {BooksPreview2024} from "../Books/BooksPreview2024";
 
 export default function Archive() {
   const [activeYear, setActiveYear] = useState("2024");
@@ -18,12 +19,10 @@ export default function Archive() {
       <section className="relative w-full bg-gradient-to-r from-[#6B2E5E] via-[#A84374] to-[#E26A2C] py-16 shadow-md rounded-b-3xl">
         <div className="text-center px-6">
           <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mb-4">
-            The Festival Archives
+           Kashmir literature festival <br/>
+           
           </h1>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Relive the moments from Kashmir Literature Festival. Explore the
-            journey through past editions and cultural highlights.
-          </p>
+          
         </div>
 
         {/* Decorative Pattern */}
@@ -43,7 +42,7 @@ export default function Archive() {
                   : "text-gray-600 hover:text-[#D86B27]"
               }`}
           >
-            {year}
+            Archive {year}
           </button>
         ))}
       </div>
@@ -63,6 +62,9 @@ export default function Archive() {
       </div>
       <div className="">
         <GalleryPreview2024 />
+      </div>
+      <div className="">
+        <BooksPreview2024 />
       </div>
       <div className="">
         <MediaPreview2024 />

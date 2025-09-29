@@ -35,8 +35,8 @@ import jash from "./assets/speakers/2025/jash.png";
 import prashant from "./assets/speakers/2025/prashant.png";
 
 const speakers = [
-  { id: 21 , name: "Shri. Manoj Sinha", role: "Hon’ble Lt. Governor UT of J&K", topic: "CHIEF GUESTS", image: manoj_sinha },
-  { id: 22 , name: "Dr. Karan Singh", role: "Prince Regent Of Erstwhile State of J&K Sadr-i-Riyasat of J&K", topic: "CHIEF GUESTS", image: karan_singh },
+  { id: 21 , name: "Shri. Manoj Sinha", role: "Hon’ble Lt. Governor UT of J&K", topic: "CHIEF GUEST", image: manoj_sinha },
+  { id: 22 , name: "Dr. Karan Singh", role: "Prince Regent Of Erstwhile State of J&K Sadr-i-Riyasat of J&K", topic: "CHIEF GUEST", image: karan_singh },
   { id: 23 , name: "Shri. Vijay Dhar", role: "Educationist & Chairman, DPS Srinagar", topic: "", image: vijay_dhar },
   { id: 24 , name: "Shri. Amitava Chatterjee", role: "MD & CEO J&K Bank", topic: "", image: amitava_chatterjee },
   { id: 25 , name: "Shri. Kanwal Sibal", role: "Former Foreign Secretary of India", topic: "", image: kanwal_sibal },

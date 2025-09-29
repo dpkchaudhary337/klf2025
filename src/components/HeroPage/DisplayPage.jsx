@@ -42,10 +42,10 @@ export const DisplayPage = () => {
       {/* Bottom Black Strap with Marquee */}
       <div className="absolute bottom-0 w-full bg-black py-2 overflow-hidden">
         <div className="animate-marquee whitespace-nowrap text-xs sm:text-sm md:text-base text-white font-medium">
-          📢 Stay tuned for updates on{" "}
+          📢 “Hurry now, book your space!” or “Register now!” {" "}
           <span className="font-semibold text-[#f8d36e]">KLF 2025</span> •
           Follow us @Kashmirlitfest • For Brand partnerships & inquiries: {" "}
-          <span className="font-semibold text-[#f8d36e]">team@kashmirliteraturefestival.com</span>
+          <span className="font-semibold text-[#f8d36e]">contact@kashmirliteraturefestival.com</span>
         </div>
       </div>
     </div>

@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import img1 from "../../assets/gallery/2024/img1.jpg";
-import img2 from "../../assets/gallery/2024/img2.jpg";
-import img3 from "../../assets/gallery/2024/img3.jpg";
-import img4 from "../../assets/gallery/2024/img4.jpg";
-import img5 from "../../assets/gallery/2024/img5.jpg";
-import img6 from "../../assets/gallery/2024/img6.jpg";
-import img7 from "../../assets/gallery/2024/img7.jpg";
-import img8 from "../../assets/gallery/2024/img8.jpg";
-import img9 from "../../assets/gallery/2024/img9.jpg";
-import img10 from "../../assets/gallery/2024/img10.jpg";
+
+import yodha from "../../assets/Books/2024/yodha.jpg";
+import RoleModels from "../../assets/Books/2024/RoleModels.jpg";
+import BoseDeception from "../../assets/Books/2024/BoseDeception.jpg";
+
 import { Link } from "react-router-dom";
 
-export const GalleryPreview2024 = () => {
-  const images = [img2, img3, img4, img1, img5, img6, img7, img8, img9, img10];
+export const BooksPreview2024 = () => {
+  const images = [yodha, RoleModels, BoseDeception];
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleNext = () => {
@@ -25,34 +20,33 @@ export const GalleryPreview2024 = () => {
 
   return (
     <>
-      {/* Gallery Section */}
-      <div className="relative w-full bg-cover bg-center py-16">
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-white/80"></div>
-
+      {/* Book Section */}
+      <div className="relative w-full py-16 bg-gradient-to-b from-yellow-50 via-yellow-100 to-yellow-50">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Heading */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
-              Gallery KLF 2024
+              Book Launches in KLF 2024
             </h2>
             <p className="mt-2 text-lg text-gray-600">
-              A Glimpse Into Our World
+              Celebrating New Voices in Literature
             </p>
           </div>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {/* Book Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
             {images.map((src, i) => (
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
-                className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative bg-white rounded-xl overflow-hidden shadow-md 
+                transition-all duration-500 cursor-pointer transform 
+                hover:-translate-y-3 hover:shadow-2xl hover:rotate-1"
               >
                 <img
                   src={src}
-                  alt={`Gallery ${i + 1}`}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt={`Books ${i + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
                 {/* Hover Overlay */}
@@ -61,16 +55,6 @@ export const GalleryPreview2024 = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* ✅ View All Button right below grid */}
-          <div className="text-center mt-10">
-            <Link
-              to="/gallery/2024"
-              className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"
-            >
-              View All Gallery
-            </Link>
           </div>
         </div>
 

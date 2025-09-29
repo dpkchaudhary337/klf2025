@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/gallery/2024/galleryBg.png";
 import logo from "../../assets/srikulalogo.png";
 import paymentBg from "../../assets/paymetBg.png";
+
 export function ShrikulaDonation() {
   const [amount, setAmount] = useState("");
-  const [note, setNote] = useState(""); // State for the note input
-  const [showPopup, setShowPopup] = useState(false);
+  const [note, setNote] = useState("");
   const navigate = useNavigate();
 
   const loadRazorpayScript = () => {
@@ -32,16 +32,7 @@ export function ShrikulaDonation() {
 
     const isScriptLoaded = await loadRazorpayScript();
     if (!isScriptLoaded) {
-      alert(
-        "Failed to load Razorpay SDK. Please refresh the page and try again."
-      );
-      return;
-    }
-
-    if (!window.Razorpay) {
-      alert(
-        "Razorpay is not available. Please refresh the page and try again."
-      );
+      alert("Failed to load Razorpay SDK. Please refresh and try again.");
       return;
     }
 
@@ -58,10 +49,7 @@ export function ShrikulaDonation() {
       );
 
       const order = await response.json();
-
-      if (!order.order_id) {
-        throw new Error("Failed to create Razorpay order");
-      }
+      if (!order.order_id) throw new Error("Failed to create Razorpay order");
 
       const options = {
         key: "rzp_live_VUs6MEIFtSvIEc",
@@ -70,15 +58,11 @@ export function ShrikulaDonation() {
         name: "Srikula Foundation",
         description: "Donation",
         order_id: order.order_id,
-        handler: function (response) {
-          setShowPopup(true);
-          setTimeout(() => {
-            setShowPopup(false);
-            navigate("/");
-          }, 3000);
+        handler: function () {
+          navigate("/thank-you");
         },
         theme: {
-          color: "#3399cc",
+          color: "#BA451C",
         },
       };
 
@@ -92,99 +76,59 @@ export function ShrikulaDonation() {
 
   return (
     <div
-      className="flex justify-center items-center min-h-screen bg-cover bg-center font-inter"
+      className="flex justify-center items-center min-h-screen bg-cover bg-center px-4 font-inter"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="flex flex-col items-center text-center mt-10 sm:w-[40vw]">
+      <div className="w-full max-w-md bg-white/90 rounded-2xl shadow-xl p-6 text-center">
+        {/* Logo */}
+        <div className="flex justify-center mb-4">
+          <img src={logo} alt="logo" className="w-14 h-14 rounded-full shadow" />
+        </div>
+
         {/* Header */}
-        <h2 className="text-3xl font-bold text-black font-comic">
+        <h2 className="text-2xl font-bold text-gray-800">
           Kashmir Literature Festival
         </h2>
-        <p className="text-base text-black mt-1 font-semibold">
-          A Srikula Foundation initiative
+        <p className="text-sm text-gray-600 mb-6">
+          A Srikula Foundation Initiative
         </p>
-        {/* Donation Card */}
-        <div className=" p-6 text-center mt-8 relative">
-          <div>
-            <img
-              src={paymentBg}
-              className="w-[90vw] h-[70vh] sm:h-[40vh] lg:w-[25vw] lg:h-[80vh]"
+
+        {/* Input */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Donation Amount
+          </label>
+          <div className="flex items-center justify-center mt-2">
+            <span className="text-2xl font-bold text-gray-800 mr-2">₹</span>
+            <input
+              type="text"
+              value={amount}
+              onChange={(e) =>
+                setAmount(e.target.value.replace(/[^0-9]/g, ""))
+              }
+              className="text-2xl text-center border-b-2 border-gray-400 focus:border-[#BA451C] outline-none w-28"
+              placeholder="0"
             />
           </div>
-          <div className="absolute top-2 left-1/2 transform -translate-x-1/2">
-            {/* Logo */}
-            <div className="w-12 h-12 mx-auto mb-4 bg-white shadow-md">
-              <img src={logo} alt="logo" className="w-full h-full" />
-            </div>
-
-            {/* Title Section */}
-            <h3 className="text-lg font-medium text-gray-700">Paying</h3>
-            <h2 className="text-xl font-bold text-gray-800 mt-1 sm:w-[300px]">
-              SRIKULA FOUNDATION
-            </h2>
-            <p className="text-sm text-blue-500 mt-2">
-              razorpay.me/@srikulafoundation
-            </p>
-
-            {/* Donation Amount Input */}
-            <div className=" flex flex-col gap-9 items-center ">
-              <div className="flex items-center justify-center mt-6">
-                <div className="flex items-center gap-2">
-                  <p className="text-3xl text-gray-800 relative  left-5">₹</p>
-                  <input
-                    type="text"
-                    value={amount}
-                    onChange={(e) =>
-                      setAmount(e.target.value.replace(/[^0-9]/g, ""))
-                    }
-                    className="text-3xl text-center outline-none w-24"
-                    placeholder="0"
-                  />
-                </div>
-              </div>
-
-              {/* Note Input */}
-              <input
-                type="text"
-                placeholder="Add a note"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-                className="w-[80%] bg-gray-100 text-black text-center mt-4 mb-4 py-1 rounded focus:outline-none "
-              />
-
-              {/* Submit Button */}
-              <button
-                onClick={handleDonation}
-                className="w-full  text-white font-medium rounded-md py-2 mt-3 bg-[#BA451C] hover:bg-[#FF9F69] transition-all"
-              >
-                Pay ₹{amount || 0}
-              </button>
-            </div>
-          </div>
         </div>
+
+        {/* Note */}
+        <input
+          type="text"
+          placeholder="Add a note (optional)"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          className="w-full bg-gray-100 text-black text-center py-2 rounded-md mb-6 focus:outline-none"
+        />
+
+        {/* Button */}
+        <button
+          onClick={handleDonation}
+          className="w-full py-3 text-white font-semibold bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200"
+        >
+          Donate ₹{amount || 0}
+        </button>
       </div>
-
-      {/* Popup Section */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center w-[90%] max-w-md">
-            <h3 className="text-lg font-medium text-gray-600">Thank You!</h3>
-            <h2 className="text-xl font-bold text-gray-800 mt-2">
-              Your Contribution Matters 🎉
-            </h2>
-            <p className="text-sm text-gray-600 mt-4">
-              We are deeply grateful for your support towards Srikula
-              Foundation. Your help empowers lives!
-            </p>
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -12,14 +12,30 @@ export function ContactUs() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Email validation regex
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  // Mobile validation regex (10 digits, optional +91)
+  const isValidMobile = (number) => /^(\+91)?[6-9]\d{9}$/.test(number);
+
   const validateForm = () => {
     if (!formData.name || !formData.email || !formData.contactNumber) {
       setError("Name, email, and contact number are required.");
+      return false;
+    }
+    if (!isValidEmail(formData.email)) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
+    if (!isValidMobile(formData.contactNumber)) {
+      setError("Please enter a valid 10-digit mobile number.");
       return false;
     }
     setError("");
@@ -28,27 +44,31 @@ export function ContactUs() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess("");
 
-    if (validateForm()) {
-      try {
-        const response = await fetch("https://api-dbaxa3zxka-uc.a.run.app/srikula/contactus", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+    if (!validateForm()) return;
 
-        if (response.ok) {
-          setSuccess("Thank you for your message! We will get back to you soon.");
-          setFormData({ name: "", email: "", contactNumber: "", message: "" });
-        } else {
-          setError("Failed to submit the form. Please try again later.");
-        }
-      } catch (error) {
-        console.error("Error during submission:", error);
-        setError("Something went wrong. Please try again.");
+    try {
+      // DB save only, mail code removed
+      const response = await fetch(`${API_BASE_URL}contactus.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess(result.message);
+        setFormData({ name: "", email: "", contactNumber: "", message: "" });
+        setTimeout(() => setSuccess(""), 5000); // success message auto-hide
+      } else {
+        setError(result.message || "Failed to submit. Please try again.");
       }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to submit. Please try again later.");
     }
   };
 
@@ -62,9 +82,19 @@ export function ContactUs() {
           Contact Us
         </h2>
 
-        {/* Error and Success Messages */}
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-center">
+            {error}
+          </div>
+        )}
+
+        {/* Success Message */}
+        {success && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mb-4 text-center">
+            {success}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           {/* Name */}
@@ -104,12 +134,13 @@ export function ContactUs() {
           {/* Contact Number */}
           <div className="mb-4">
             <label htmlFor="contactNumber" className="block text-gray-700 text-sm sm:text-base">
-              Contact Number
+              Phone Number
             </label>
             <input
               type="tel"
               id="contactNumber"
               name="contactNumber"
+              maxLength={10}
               value={formData.contactNumber}
               onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded-md mt-1 text-sm sm:text-base"
@@ -136,7 +167,7 @@ export function ContactUs() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#BA451C] hover:bg-[#FF9F69] text-white font-medium py-2 rounded-md transition-all text-sm sm:text-base"
+            className="w-full text-white font-medium py-2 text-sm sm:text-base bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200"
           >
             Send Message
           </button>

@@ -7,10 +7,10 @@ import srikulalogo from "../assets/srikulalogo.png";
 const links = [
   { name: "Home", path: "/" },
   { name: "Archive", path: "/archive" },
-  { name: "KLF 2025", path: "/klf2025" },
+  { name: "Programme", path: "/programme" },
   // { name: "Media", path: "/media" },
   { name: "Contact Us", path: "/contact" },
-  { name: "Brochure", path: "/brochure" },
+  { name: "Ablut KLF 25", path: "/aboutklf25" },
 ];
 
 const Navbar = () => {
@@ -21,13 +21,16 @@ const Navbar = () => {
       <div className="flex-col px-6 md:px-10 py-3">
         <div className="flex items-center justify-between sm:justify-around">
           {/* Logo Section */}
-          <Link to={"/"} className="flex items-center">
-            <img
-              src={logo}
-              alt="Logo"
-              className="h-14 w-14 rounded-full shadow-md"
-            />
-          </Link>
+          <div className="relative flex items-center w-28">
+            <Link to={"/"}>
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-20 w-20 rounded-full absolute -bottom-14 left-1/2 -translate-x-1/2 
+                 border-4 border-white shadow-lg bg-white"
+              />
+            </Link>
+          </div>
 
           {/* Hamburger Icon (Mobile) */}
           <div
@@ -67,17 +70,6 @@ const Navbar = () => {
             >
               Book Now
             </Link>
-
-            {/* Srikula Logo */}
-            <div className="w-14 h-14 rounded-full flex justify-center items-center mx-auto bg-white shadow-md hover:scale-105 transition">
-              <a target="_blank" rel="noreferrer" href="https://srikula.org/">
-                <img
-                  src={srikulalogo}
-                  alt="logo"
-                  className="w-full h-full cursor-pointer"
-                />
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -104,13 +96,13 @@ const Navbar = () => {
             Archive
           </NavLink>
           <NavLink
-            to="/klf2025"
+            to="/programme"
             onClick={() => setIsMenuOpen(false)}
             className={({ isActive }) =>
               isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
             }
           >
-            KLF 2025
+            Programme
           </NavLink>
           <NavLink
             to="/contact"
@@ -122,13 +114,13 @@ const Navbar = () => {
             Contact Us
           </NavLink>
           <NavLink
-            to="/brochure"
+            to="/aboutklf25"
             onClick={() => setIsMenuOpen(false)}
             className={({ isActive }) =>
               isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
             }
           >
-            Brochure
+            About KLF 25
           </NavLink>
 
           {/* Booking Button (Mobile) */}

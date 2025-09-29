@@ -153,7 +153,7 @@ export default function Booking() {
             <input
               type="number"
               name="persons"
-              min="1"
+              min="1" max="10"
               value={formData.persons}
               onChange={handleInputChange}
               className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"

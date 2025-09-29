@@ -10,11 +10,9 @@ const SpeakersPreview2025 = () => {
      <div className="bg-gray-50 py-16 px-6">
        <div className="text-center mb-12">
          <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
-           Expected Speakers KLF 2025
+           Attending Speakers KLF 2025
          </h2>
-         <p className="mt-3 text-lg text-gray-600">
-           Browse through inspiring voices from KLF
-         </p>
+        
        </div>
  
        {/* Speakers Grid */}
@@ -51,7 +49,7 @@ const SpeakersPreview2025 = () => {
              <div className="text-center mt-10">
                <Link
                  to="/speakers/2025"
-                 className="px-6 py-2 bg-[#D86B27] text-white rounded-lg shadow hover:bg-[#b8551f] transition"
+                 className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"
                >
                  View All Speakers
                </Link>

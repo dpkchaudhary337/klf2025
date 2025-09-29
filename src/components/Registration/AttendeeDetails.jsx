@@ -278,7 +278,7 @@ export default function AttendeeDetails() {
           </div>
 
           {/* Photo (Optional) */}
-          <div className="mb-3">
+          <div className="mb-3 hidden">
             <label className="block font-medium">
               Upload Profile Photo (Optional)
             </label>
