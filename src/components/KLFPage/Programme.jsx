@@ -65,7 +65,7 @@ const eventsData = [
         title: "Discussion",
         venue: "KLF 2025",
         description:
-          "Flashpoint Kashmir: Is World's Obsession with Kashmir a positive? | Participants: Abhijeet Mitra, Rami Desai, SD Singh | Moderator: Raja Muneeb",
+          "Flashpoint Kashmir: Is World's Obsession with Kashmir a positive? | Participants: Abhijeet Mitra, Rami Desai | Moderator: Raja Muneeb",
       },
       {
         time: "13:05-13:15",
@@ -281,9 +281,12 @@ const Programme = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-50 via-pink-50 to-red-50 py-10 px-4">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-center mb-12 gap-4">
+        <div
+          className="flex items-center justify-center mb-12 gap-4"
+          data-aos="fade-down"
+        >
           <h1 className="text-5xl md:text-5xl font-extrabold font-serif text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-pink-600 to-red-500 text-center drop-shadow-lg">
-            KLF 2025 Programme
+            KLF 2025 Calendar
           </h1>
         </div>
 
@@ -291,26 +294,33 @@ const Programme = () => {
           <div
             key={idx}
             className="mb-6 border rounded-xl overflow-hidden shadow-md"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}
           >
             {/* Collapse Header */}
             <button
               onClick={() => toggleDay(idx)}
               className="w-full flex justify-between items-center bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 px-6 py-4 text-left text-white font-bold text-xl"
+              data-aos="fade-right"
             >
               {dayItem.day}
-              <span className="ml-4 text-lg">
-                {openDay === idx ? "▲" : "▼"}
-              </span>
+              <span className="ml-4 text-lg">{openDay === idx ? "▲" : "▼"}</span>
             </button>
 
             {/* Collapse Body */}
             {openDay === idx && (
-              <div className="bg-white p-6">
+              <div
+                className="bg-white p-6"
+                data-aos="fade-up"
+                data-aos-delay={200}
+              >
                 <div className="relative border-l-2 border-purple-300 pl-2">
                   {dayItem.events.map((event, i) => (
                     <div
                       key={i}
                       className="mb-8 relative bg-white/95 p-6 rounded-xl border border-[#E1E1E1]"
+                      data-aos="fade-up"
+                      data-aos-delay={i * 100}
                     >
                       {/* Timeline Dot */}
                       <span className="absolute -left-4 w-4 h-4 bg-purple-700 rounded-full border-2 border-white top-1/2 -translate-y-1/2"></span>

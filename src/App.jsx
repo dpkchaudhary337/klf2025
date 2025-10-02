@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MainLayout } from "./mainLayout";
 import { Hero } from "./components/HeroPage/HeroSection";
@@ -12,6 +15,7 @@ import ScrollToTop from "./components/KLFPage/ScrollToTop";
 import { Gallery2024 } from "./Pages/Gallery/Gallery2024";
 import Speakers2024 from "./Pages/Speakers/Speakers2024";
 import Speakers2025 from "./Pages/Speakers/Speakers2025";
+import { Partners2024 } from "./Pages/Partners/Partners2024";
 import { Partners2025 } from "./Pages/Partners/Partners2025";
 import { Books2025 } from "./Pages/Books/Books2025";
 
@@ -25,14 +29,28 @@ import AttendeeDetails from "./components/Registration/AttendeeDetails";
 import PaymentSuccess from "./components/Registration/PaymentSuccess";
 
 import NotFound from "./Pages/NotFound";
+import Privacy from "./Pages/privacypolicy";
+import RefundPolicy from "./Pages/refundpolicy";
+import Terms from "./Pages/terms";
 
 export default function App() {
+  // 🔹 Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // 1 second animation
+      once: true, // ek bar hi chale
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Hero />} />
+          <Route path="/privacypolicy" element={<Privacy />} />
+          <Route path="/refundpolicy" element={<RefundPolicy />} />
+          <Route path="/termsandconditions" element={<Terms />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/klf2024" element={<KLF2024 />} />
           <Route path="/programme" element={<Programme />} />
@@ -41,6 +59,7 @@ export default function App() {
           <Route path="/speaker/:id" element={<SpeakerDetail />} />
           <Route path="/speakers/2025" element={<Speakers2025 />} />
           <Route path="/gallery/2024" element={<Gallery2024 />} />
+          <Route path="/partners/2024" element={<Partners2024 />} />
           <Route path="/partners/2025" element={<Partners2025 />} />
           <Route path="/donation" element={<ShrikulaDonation />} />
           <Route path="/thank-you" element={<ThankYou />} />

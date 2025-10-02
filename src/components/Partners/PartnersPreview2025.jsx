@@ -1,75 +1,28 @@
-import academy from "../../assets/partners/2025/academy.png";
-import sangam from "../../assets/partners/2025/sangamTalks.png";
-import smart from "../../assets/partners/2025/smart4bharat.png";
-import risingKashmir from "../../assets/partners/2025/risingKasmir.png";
-import rishi from "../../assets/partners/2025/rishiUniversity.png";
-import prachyam from "../../assets/partners/2025/PrachyamTV.png";
-import delhiUniversity from "../../assets/partners/2025/DULitFest.png";
-import urbanPandit from "../../assets/partners/2025/UrbanPandit.png";
-import gulshanBook from "../../assets/partners/2025/gulshanBook.png";
-import sabere from "../../assets/partners/2025/SabreandQuill.png";
 import { Link } from "react-router-dom";
+import academy from "../../assets/partners/2025/academy.png";
+import nift from "../../assets/partners/2025/nift.jpeg";
+import aggregate from "../../assets/partners/2025/aggregate.png";
+import sabere from "../../assets/partners/2025/SabreandQuill.png";
 
 const partners = [
-  {
-    name: "J&K Academy of Art, Culture & language",
-    logo: academy,
-    link: "http://jkaacl.jk.gov.in/Main/Default.aspx",
-  },
-  {
-    name: "Sangam",
-    logo: sangam,
-    link: "https://sangamtalks.org/",
-  },
-  {
-    name: "Smart4Bharat",
-    logo: smart,
-    link: "https://smart4bharat.com",
-  },
-  {
-    name: "Rising Kashmir",
-    logo: risingKashmir,
-    link: "https://risingkashmir.com/",
-  },
-  {
-    name: "Rishi Hood University",
-    logo: rishi,
-    link: "https://rishihood.edu.in/",
-  },
-  {
-    name: "Prachyam TV",
-    logo: prachyam,
-    link: "https://prachyam.com/",
-  },
-  {
-    name: "Delhi University Lit. Fest",
-    logo: delhiUniversity,
-    link: "https://dulitfest.org/",
-  },
-  {
-    name: "The Urban Pandit Show",
-    logo: urbanPandit,
-    link: "https://youtube.com/@urbanpandits?si=ksw2kFqCyNzfxo-v",
-  },
-  {
-    name: "Gulshan Books Kashmir",
-    logo: gulshanBook,
-    link: "https://www.instagram.com/gulshan_books_kashmir?igsh=N21hc3o2bTZkcHB4",
-  },
-  {
-    name: "Sabere and Quill Publisher",
-    logo: sabere,
-    link: "https://www.sabreandquill.com/",
-  },
+  { name: "J&K Academy of Art, Culture & language", logo: academy, link: "http://jkaacl.jk.gov.in/Main/Default.aspx" },
+  { name: "National Institute of Fashion Technology", logo: nift, link: "#" },
+  { name: "Aggregate", logo: aggregate, link: "#" },
+  { name: "Sabere and Quill Publisher", logo: sabere, link: "https://www.sabreandquill.com/" },
 ];
 
 export const PartnersPreview2025 = () => {
   return (
     <div className="py-20 bg-white/80">
-      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-         Partners KLF 2025
+      {/* Heading */}
+      <h2
+        className="text-3xl font-bold text-center mb-12 text-gray-800"
+        data-aos="fade-down"
+      >
+        Partners KLF 2025
       </h2>
 
+      {/* Partners Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-6xl mx-auto px-6">
         {partners.map((partner, index) => (
           <a
@@ -78,6 +31,8 @@ export const PartnersPreview2025 = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm hover:shadow-lg transition-all duration-300"
+            data-aos="fade-up"
+            data-aos-delay={index * 100} // stagger effect
           >
             <div className="h-20 flex items-center justify-center">
               <img
@@ -94,7 +49,11 @@ export const PartnersPreview2025 = () => {
       </div>
 
       {/* View All Button */}
-      <div className="text-center mt-10">
+      <div
+        className="text-center mt-10"
+        data-aos="fade-up"
+        data-aos-delay={1200}
+      >
         <Link
           to="/partners/2025"
           className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"

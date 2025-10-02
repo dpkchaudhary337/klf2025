@@ -1,22 +1,14 @@
 import TheRaavya from "../../assets/Podcast/2025/TheRaavya.png";
-import BeingLogical from "../../assets/Podcast/2025/BeingLogical.png";
+
 import AwaaraMusafir from "../../assets/Podcast/2025/AwaaraMusafir.png";
-import flowerPoppy from "../../assets/Sunflower-8.png";
 
 const PodcastPreview2025 = () => {
-  // Card data with links
   const cards = [
     {
       imageSrc: TheRaavya,
       title: "The Raavya Sarda Show",
       description: "",
       link: "https://www.youtube.com/@raavyasarda/podcasts",
-    },
-    {
-      imageSrc: BeingLogical,
-      title: "Being Logical With Amber",
-      description: "",
-      link: "https://www.youtube.com/@AmberZaidiOfficial/podcasts",
     },
     {
       imageSrc: AwaaraMusafir,
@@ -29,17 +21,15 @@ const PodcastPreview2025 = () => {
   return (
     <div className="relative w-full bg-cover bg-center py-16">
       {/* Overlay color */}
-      <div className="absolute inset-0 bg-gradient-to-b from-yellow-50 via-yellow-100 to-yellow-50"></div>
+      <div className="absolute inset-0 bg-white/80"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12" data-aos="fade-up">
           <h2 className="inline-block text-2xl lg:text-3xl px-6 py-3 font-bold rounded-md">
-            Podcast Partners KLF 25
+            Podcast Partners KLF 2025
           </h2>
-          <p className="mt-4 text-lg md:text-xl font-medium">
-            Voices that Inspire
-          </p>
+          <p className="mt-4 text-lg md:text-xl font-medium">Voices that Inspire</p>
         </div>
 
         {/* Cards */}
@@ -47,11 +37,13 @@ const PodcastPreview2025 = () => {
           {cards.map((card, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
               className="bg-white rounded-2xl shadow-md overflow-hidden 
-              transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
             >
               {/* Image wrapper with fixed aspect ratio */}
-              <div className="relative w-full aspect-[9/9] overflow-hidden">
+              <div className="relative w-full aspect-[1/1] overflow-hidden">
                 <img
                   src={card.imageSrc}
                   alt={card.title}
@@ -61,9 +53,7 @@ const PodcastPreview2025 = () => {
 
               {/* Content section */}
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {card.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-gray-900">{card.title}</h3>
                 <p className="text-sm text-gray-600 mt-2">{card.description}</p>
 
                 {/* Link Button */}

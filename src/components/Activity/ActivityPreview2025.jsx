@@ -37,13 +37,12 @@ const ActivityPreview2025 = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="inline-block text-2xl lg:text-3xl px-6 py-3 font-bold rounded-md">
-            Extra Activities KLF 25
+          <h2 className="inline-block text-2xl lg:text-3xl px-6 py-3 font-bold rounded-md" data-aos="fade-down">
+            Activities KLF 25
           </h2>
-          <p className="mt-4 text-lg md:text-xl font-medium">
+          <p className="mt-4 text-lg md:text-xl font-medium" data-aos="fade-up" data-aos-delay="150">
             Unfolding Expressions Beyond Literature
           </p>
-         
         </div>
 
         {/* Cards */}
@@ -51,8 +50,11 @@ const ActivityPreview2025 = () => {
           {cards.map((card, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
+              data-aos-once="true"
               className="bg-white rounded-2xl shadow-md overflow-hidden 
-              transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                         transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
             >
               {/* Image wrapper with fixed aspect ratio */}
               <div className="relative w-full aspect-[4/3] overflow-hidden">
@@ -65,9 +67,7 @@ const ActivityPreview2025 = () => {
 
               {/* Content section */}
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {card.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-gray-900">{card.title}</h3>
                 <p className="text-sm text-gray-600 mt-2">{card.description}</p>
               </div>
             </div>

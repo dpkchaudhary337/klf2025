@@ -8,7 +8,7 @@ const Performances2025 = () => {
   const cards = [
     {
       imageSrc: noor,
-      title: "NOOR МОНАМMAD",
+      title: "NOOR MOHAMMAD",
       description: "Renowned Kashmiri Folk and Sufi Music Maestro.",
     },
     {
@@ -19,7 +19,7 @@ const Performances2025 = () => {
     },
     {
       imageSrc: aish,
-      title: "AISHWARYA ATTRI & NANDANA MOULICK",
+      title: "AISHWARYA ATTRI <br/> & NANDANA MOULICK",
       description: "Renowned Bharatnatyam Performers.",
     },
   ];
@@ -34,7 +34,7 @@ const Performances2025 = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12" data-aos="fade-up">
           <h2 className="inline-block text-2xl lg:text-3xl px-6 py-3 font-bold rounded-md">
             Cultural Performances & Events KLF 2025
           </h2>
@@ -48,6 +48,8 @@ const Performances2025 = () => {
           {cards.map((card, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 150} // stagger effect
               className="bg-white rounded-2xl shadow-md overflow-hidden 
               transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
             >
@@ -62,12 +64,11 @@ const Performances2025 = () => {
 
               {/* Content section */}
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  {card.description}
-                </p>
+                <h3
+                  className="text-lg font-semibold text-gray-900"
+                  dangerouslySetInnerHTML={{ __html: card.title }}
+                ></h3>
+                <p className="text-sm text-gray-600 mt-2">{card.description}</p>
               </div>
             </div>
           ))}

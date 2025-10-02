@@ -46,22 +46,17 @@ export const Gallery2024 = () => {
 
   return (
     <>
-      {/* Gallery Section */}
-      <div
-        className="relative w-full bg-cover bg-center py-16"
-        >
+      <div className="relative w-full bg-cover bg-center py-16">
         {/* Overlay */}
         <div className="absolute inset-0 bg-white/80"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
               Gallery KLF 2024
             </h2>
-            <p className="mt-2 text-lg text-gray-600">
-              A Glimpse Into Our World
-            </p>
+           
           </div>
 
           {/* Gallery Grid */}
@@ -70,6 +65,8 @@ export const Gallery2024 = () => {
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
                 <img

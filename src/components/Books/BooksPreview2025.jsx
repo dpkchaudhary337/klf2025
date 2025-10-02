@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-
 import China from "../../assets/Books/2025/China.jpg";
 import Eminent from "../../assets/Books/2025/Eminent.jpg";
 import lalitAditya from "../../assets/Books/2025/lalitAditya.jpg";
 import Reflection from "../../assets/Books/2025/Reflection.jpg";
 import Shaitan from "../../assets/Books/2025/Shaitan.jpg";
-
 import { Link } from "react-router-dom";
 
 export const BooksPreview2025 = () => {
@@ -22,11 +20,12 @@ export const BooksPreview2025 = () => {
 
   return (
     <>
-      {/* Book Section */}
-      <div className="relative w-full py-16 bg-gradient-to-b from-yellow-50 via-yellow-100 to-yellow-50">
+      <div
+        className="relative w-full py-16 bg-gradient-to-b from-yellow-50 via-yellow-100 to-yellow-50"
+      >
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
               Book Launches in KLF 2025
             </h2>
@@ -41,9 +40,11 @@ export const BooksPreview2025 = () => {
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-md 
-                transition-all duration-500 cursor-pointer transform 
-                hover:-translate-y-3 hover:shadow-2xl hover:rotate-1"
+                  transition-all duration-500 cursor-pointer transform 
+                  hover:-translate-y-3 hover:shadow-2xl hover:rotate-1"
               >
                 <img
                   src={src}
@@ -59,8 +60,8 @@ export const BooksPreview2025 = () => {
             ))}
           </div>
 
-          {/* ✅ View All Button */}
-          <div className="text-center mt-10">
+          {/* View All Button */}
+          <div className="text-center mt-10" data-aos="fade-up" data-aos-delay={500}>
             <Link
               to="/books/2025"
               className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"
@@ -73,17 +74,13 @@ export const BooksPreview2025 = () => {
         {/* Lightbox Modal */}
         {selectedIndex !== null && (
           <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-            {/* Image Wrapper */}
             <div className="relative">
-              {/* Close Button */}
               <button
                 className="absolute top-2 right-2 text-white text-3xl font-bold hover:text-gray-400 z-[10000]"
                 onClick={() => setSelectedIndex(null)}
               >
                 ✕
               </button>
-
-              {/* Displayed Image */}
               <img
                 src={images[selectedIndex]}
                 alt={`Gallery Large ${selectedIndex + 1}`}
@@ -91,7 +88,6 @@ export const BooksPreview2025 = () => {
               />
             </div>
 
-            {/* Prev Button */}
             <button
               className="absolute left-6 text-white text-4xl font-bold hover:text-gray-400"
               onClick={handlePrev}
@@ -99,7 +95,6 @@ export const BooksPreview2025 = () => {
               ‹
             </button>
 
-            {/* Next Button */}
             <button
               className="absolute right-6 text-white text-4xl font-bold hover:text-gray-400"
               onClick={handleNext}

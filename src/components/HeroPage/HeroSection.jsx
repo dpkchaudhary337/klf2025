@@ -46,15 +46,12 @@ export function Hero() {
         <div className="">
           <Performances2025 />
         </div>
-        <div className="">
-          <GalleryPreview2024 />
-        </div>
-        <div className="">
-          <BooksPreview2025 />
-        </div>
        
         <div className="">
           <PodcastPreview2025 />
+        </div>
+         <div className="">
+          <BooksPreview2025 />
         </div>
         <div className="">
           <MediaPreview2025 />

@@ -33,9 +33,9 @@ const Performances2024 = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12" data-aos="fade-up">
           <h2 className="inline-block text-2xl lg:text-3xl px-6 py-3 font-bold rounded-md">
-            KLF 2024 Cultural Performances & Events
+            KLF 2024 Performances
           </h2>
           <p className="mt-4 text-lg md:text-xl font-medium">
             Experience the Heart of Culture
@@ -47,6 +47,8 @@ const Performances2024 = () => {
           {cards.map((card, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 150} // stagger effect
               className="relative w-72 h-[420px] bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500"
             >
               {/* Image */}

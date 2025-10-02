@@ -9,6 +9,10 @@ export default {
         poppins: ["Poppins", "sans-serif"],
         inter: ["Inter", "sans-serif"],
         comic: ['"Comic Sans MS"', "cursive"],
+
+        // 👇 Add new fonts
+        heading: ["CAPITALIS"], // Headings
+        body: ["Lora"], // Body / subheadings
       },
       animation: {
         scroll: "scroll 22s linear infinite",
@@ -19,7 +23,8 @@ export default {
         marquee: "marquee 12s linear infinite",
         slideIn: "slideIn 1s ease-out",
         scrollGallery: "scrollGallery 30s linear infinite",
-        "slow-spin": "spin 10s linear infinite", // slow spin (15s ek round)
+        "slow-spin": "spin 10s linear infinite",
+        ctaPulse: 'ctaPulse 1s ease-in-out infinite',
       },
       keyframes: {
         scroll: {
@@ -53,6 +58,10 @@ export default {
         scrollGallery: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        ctaPulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' }, // zoom effect
         },
       },
 

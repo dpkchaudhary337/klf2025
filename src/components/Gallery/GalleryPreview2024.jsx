@@ -25,20 +25,16 @@ export const GalleryPreview2024 = () => {
 
   return (
     <>
-      {/* Gallery Section */}
       <div className="relative w-full bg-cover bg-center py-16">
-        {/* Overlay */}
         <div className="absolute inset-0 bg-white/80"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
               Gallery KLF 2024
             </h2>
-            <p className="mt-2 text-lg text-gray-600">
-              A Glimpse Into Our World
-            </p>
+           
           </div>
 
           {/* Gallery Grid */}
@@ -47,6 +43,8 @@ export const GalleryPreview2024 = () => {
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
                 <img
@@ -63,8 +61,8 @@ export const GalleryPreview2024 = () => {
             ))}
           </div>
 
-          {/* ✅ View All Button right below grid */}
-          <div className="text-center mt-10">
+          {/* View All Button */}
+          <div className="text-center mt-10" data-aos="fade-up" data-aos-delay={200}>
             <Link
               to="/gallery/2024"
               className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"
@@ -77,9 +75,7 @@ export const GalleryPreview2024 = () => {
         {/* Lightbox Modal */}
         {selectedIndex !== null && (
           <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-            {/* Image Wrapper */}
             <div className="relative">
-              {/* Close Button */}
               <button
                 className="absolute top-2 right-2 text-white text-3xl font-bold hover:text-gray-400 z-[10000]"
                 onClick={() => setSelectedIndex(null)}
@@ -87,7 +83,6 @@ export const GalleryPreview2024 = () => {
                 ✕
               </button>
 
-              {/* Displayed Image */}
               <img
                 src={images[selectedIndex]}
                 alt={`Gallery Large ${selectedIndex + 1}`}
@@ -95,7 +90,6 @@ export const GalleryPreview2024 = () => {
               />
             </div>
 
-            {/* Prev Button */}
             <button
               className="absolute left-6 text-white text-4xl font-bold hover:text-gray-400"
               onClick={handlePrev}
@@ -103,7 +97,6 @@ export const GalleryPreview2024 = () => {
               ‹
             </button>
 
-            {/* Next Button */}
             <button
               className="absolute right-6 text-white text-4xl font-bold hover:text-gray-400"
               onClick={handleNext}

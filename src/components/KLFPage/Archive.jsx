@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import KLF2024 from "./KLF2024"; // make sure this has `export default KLF2024`
+import KLF2024 from "./KLF2024"; 
 import SpeakersPreview2024 from "../Speakers/SpeakersPreview2024";
 import { PartnersPreview2024 } from "../Partners/PartnersPreview2024";
 import Highlights2024 from "./Highlights2024";
 import { GalleryPreview2024 } from "../Gallery/GalleryPreview2024";
 import { MediaPreview2024 } from "../NewsMedia/MediaPreview2024";
 import Performances2024 from "../Performance/Performances2024";
-import {BooksPreview2024} from "../Books/BooksPreview2024";
+import { BooksPreview2024 } from "../Books/BooksPreview2024";
 
 export default function Archive() {
   const [activeYear, setActiveYear] = useState("2024");
@@ -16,13 +16,14 @@ export default function Archive() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FDF6F0] to-white">
       {/* Hero / Title Section */}
-      <section className="relative w-full bg-gradient-to-r from-[#6B2E5E] via-[#A84374] to-[#E26A2C] py-16 shadow-md rounded-b-3xl">
+      <section
+        className="relative w-full bg-gradient-to-r from-[#6B2E5E] via-[#A84374] to-[#E26A2C] py-16 shadow-md rounded-b-3xl"
+        data-aos="fade-down"
+      >
         <div className="text-center px-6">
           <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mb-4">
-           Kashmir literature festival <br/>
-           
+            Kashmir Literature Festival <br />
           </h1>
-          
         </div>
 
         {/* Decorative Pattern */}
@@ -30,7 +31,10 @@ export default function Archive() {
       </section>
 
       {/* Tabs */}
-      <div className="flex justify-center space-x-6 border-b border-gray-300 mt-10">
+      <div
+        className="flex justify-center space-x-6 border-b border-gray-300 mt-10"
+        data-aos="fade-up"
+      >
         {years.map((year) => (
           <button
             key={year}
@@ -48,25 +52,25 @@ export default function Archive() {
       </div>
 
       {/* Year Content */}
-      <div>
+      <div data-aos="fade-up">
         <Highlights2024 />
       </div>
-      <div>
+      <div data-aos="fade-up" data-aos-delay="100">
         <SpeakersPreview2024 />
       </div>
-      <div className="">
+      <div data-aos="fade-up" data-aos-delay="200">
         <PartnersPreview2024 />
       </div>
-      <div className="">
+      <div data-aos="fade-up" data-aos-delay="300">
         <Performances2024 />
       </div>
-      <div className="">
+      <div data-aos="fade-up" data-aos-delay="400">
         <GalleryPreview2024 />
       </div>
-      <div className="">
+      <div data-aos="fade-up" data-aos-delay="500">
         <BooksPreview2024 />
       </div>
-      <div className="">
+      <div data-aos="fade-up" data-aos-delay="600">
         <MediaPreview2024 />
       </div>
     </div>

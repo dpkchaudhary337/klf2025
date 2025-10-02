@@ -72,8 +72,11 @@ export const MediaPreview2024 = () => {
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-900">
-          Media Coverage
+        <h2
+          className="text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-900"
+          data-aos="fade-down"
+        >
+          Media Coverage KLF 2024
         </h2>
 
         {/* News Cards */}
@@ -86,6 +89,8 @@ export const MediaPreview2024 = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
             >
               <div className="overflow-hidden">
                 <img
@@ -109,7 +114,6 @@ export const MediaPreview2024 = () => {
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={(e) => {
-            // Close only if click is NOT on image or arrows
             const clickedEl = e.target;
             if (
               clickedEl.tagName !== "IMG" &&
@@ -151,10 +155,15 @@ export const MediaPreview2024 = () => {
               src={newsItems[selectedIndex].image}
               alt={newsItems[selectedIndex].title}
               className="max-h-[80vh] max-w-full object-contain rounded-lg shadow-xl"
+              data-aos="zoom-in"
             />
 
             {/* Caption */}
-            <p className="mt-4 text-center text-white text-lg max-w-xl mx-auto px-4 bg-black/50 rounded-md py-2">
+            <p
+              className="mt-4 text-center text-white text-lg max-w-xl mx-auto px-4 bg-black/50 rounded-md py-2"
+              data-aos="fade-up"
+              data-aos-delay={200}
+            >
               {newsItems[selectedIndex].title}
             </p>
           </div>

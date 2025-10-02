@@ -8,22 +8,22 @@ const SpeakersPreview2024 = () => {
 
   return (
     <div className="bg-gray-50 py-16 px-6">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12" data-aos="fade-up">
         <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
            Speakers KLF 2024
         </h2>
-        <p className="mt-3 text-lg text-gray-600">
-          Browse through inspiring voices from KLF
-        </p>
+        
       </div>
 
       {/* Speakers Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 max-w-7xl mx-auto">
-        {previewSpeakers.map((speaker) => (
+        {previewSpeakers.map((speaker, index) => (
           <Link
             to={`/speaker/${speaker.id}`}
             key={speaker.id}
             className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl block"
+            data-aos="fade-up"
+            data-aos-delay={index * 100} // staggered effect
           >
             <img
               src={speaker.image}
@@ -41,7 +41,7 @@ const SpeakersPreview2024 = () => {
       </div>
 
       {/* View All Button */}
-      <div className="text-center mt-10">
+      <div className="text-center mt-10" data-aos="fade-up" data-aos-delay="500">
         <Link
           to="/speakers/2024"
           className="px-6 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 text-white rounded-lg shadow hover:bg-[#b8551f] transition"

@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
-import srikulalogo from "../assets/srikulalogo.png";
 
 const links = [
   { name: "Home", path: "/" },
   { name: "Archive", path: "/archive" },
-  { name: "Programme", path: "/programme" },
-  // { name: "Media", path: "/media" },
+  { name: "Calendar", path: "/programme" },
   { name: "Contact Us", path: "/contact" },
-  { name: "Ablut KLF 25", path: "/aboutklf25" },
+  { name: "About KLF 25", path: "/aboutklf25" },
 ];
 
 const Navbar = () => {
@@ -26,8 +24,7 @@ const Navbar = () => {
               <img
                 src={logo}
                 alt="Logo"
-                className="h-20 w-20 rounded-full absolute -bottom-14 left-1/2 -translate-x-1/2 
-                 border-4 border-white shadow-lg bg-white"
+                className="h-20 w-20 absolute -bottom-14 left-1/2 -translate-x-1/2"
               />
             </Link>
           </div>
@@ -44,7 +41,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Navigation Links (Desktop) */}
+          {/* Desktop Links */}
           <div className="hidden lg:flex space-x-8 text-sm font-medium">
             {links.map((link, idx) => (
               <NavLink
@@ -61,12 +58,11 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right Side Section */}
+          {/* Right Side CTA */}
           <div className="hidden lg:flex items-center gap-6">
-            {/* Booking Button */}
             <Link
               to="/registration"
-              className="px-5 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200"
+              className="px-5 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200 animate-ctaPulse"
             >
               Book Now
             </Link>
@@ -77,64 +73,26 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden mt-3 flex flex-col space-y-4 text-sm font-medium bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a] px-5 py-6 rounded-md shadow-lg">
-          <NavLink
-            to="/"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/archive"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
-            }
-          >
-            Archive
-          </NavLink>
-          <NavLink
-            to="/programme"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
-            }
-          >
-            Programme
-          </NavLink>
-          <NavLink
-            to="/contact"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
-            }
-          >
-            Contact Us
-          </NavLink>
-          <NavLink
-            to="/aboutklf25"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
-            }
-          >
-            About KLF 25
-          </NavLink>
+          {links.map((link, idx) => (
+            <NavLink
+              key={idx}
+              to={link.path}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                isActive ? "text-orange-400 border-b-2 border-orange-400" : ""
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
 
-          {/* Booking Button (Mobile) */}
           <Link
             to="/registration"
-            className="px-4 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 rounded-full text-center font-semibold shadow-md hover:scale-105 transition"
-            onClick={() => setIsMenuOpen(false)}
+            className="px-5 py-2 bg-gradient-to-r from-orange-500 via-pink-500 to-red-600 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200 animate-ctaPulse"
           >
             Book Now
           </Link>
 
-          <div className="w-12 h-12 mx-auto mt-4 bg-white shadow-md rounded-full overflow-hidden">
-            <img src={srikulalogo} alt="logo" className="w-full h-full" />
-          </div>
         </div>
       )}
     </nav>
