@@ -58,9 +58,9 @@ export const DisplayPage = () => {
         data-aos-delay="700"
       >
         <div className="animate-marquee whitespace-nowrap text-xs sm:text-sm md:text-base text-white font-medium">
-          📢 “Hurry now, book your space!” or “Register now!”{" "}
-          <span className="font-semibold text-[#f8d36e]">KLF 2025</span> •
-          Follow us @Kashmirlitfest • For Brand partnerships & inquiries:{" "}
+          📢 “KLF 2025 registrations are now live! Click ‘Book Now’ to grab your festival pass. Follow our Socials @kashmirlitfest”{" "}
+          <span className="font-semibold text-[#f8d36e]">KLF 2025</span>{" "}
+          • For Brand partnerships & inquiries:{" "}
           <span className="font-semibold text-[#f8d36e]">
             contact@kashmirliteraturefestival.com
           </span>

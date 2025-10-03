@@ -80,173 +80,179 @@ export default function Registration() {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-[#FFDDCB] to-[#FFBE9A] relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-[#FFDDCB] to-[#FFBE9A] relative px-4 py-10">
       <div className="absolute inset-0 bg-white/40"></div>
 
       <div
         className={`relative w-full transition-all duration-700 ${
-          formData.package_type ? "max-w-6xl flex gap-8" : "max-w-lg"
+          formData.package_type ? "max-w-6xl" : "max-w-lg"
         }`}
       >
-        {/* Form Section */}
         <div
-          className={`bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full ${
-            formData.package_type ? "md:w-1/2" : "max-w-lg mx-auto"
+          className={`flex flex-col md:flex-row gap-8 ${
+            formData.package_type ? "" : "items-center"
           }`}
-          data-aos={formData.package_type ? "fade-right" : ""}
         >
-          <h2 className="text-3xl font-extrabold text-center mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
-            🎟 Book Your Package
-          </h2>
+          {/* Form Section */}
+          <div
+            className={`bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full ${
+              formData.package_type ? "md:w-1/2" : "max-w-lg mx-auto"
+            }`}
+            data-aos={formData.package_type ? "fade-right" : ""}
+          >
+            <h2 className="text-3xl font-extrabold text-center mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+              🎟 Book Your Package
+            </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Name */}
-            <div>
-              <label className="block font-medium">Name*</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-                placeholder="Enter your name"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div>
-              <label className="block font-medium">Email*</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-                placeholder="Enter your email"
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
-            </div>
-
-            {/* Phone */}
-            <div>
-              <label className="block font-medium">Phone*</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-                placeholder="10 digit phone number"
-              />
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-              )}
-            </div>
-
-            {/* Package */}
-            <div>
-              <label className="block font-medium">Package*</label>
-              <select
-                name="package_type"
-                value={formData.package_type}
-                onChange={handleInputChange}
-                className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-              >
-                <option value="">-- Select Package --</option>
-                {packages.map((pkg) => (
-                  <option key={pkg.id} value={pkg.name}>
-                    {pkg.name} (₹{parseInt(pkg.price).toLocaleString()})
-                  </option>
-                ))}
-              </select>
-              {errors.package_type && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.package_type}
-                </p>
-              )}
-            </div>
-
-            {/* Diamond input */}
-            {formData.package_type.toLowerCase().includes("diamond") && (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Name */}
               <div>
-                <label className="block font-medium">
-                  Enter Donation Amount*
-                </label>
+                <label className="block font-medium">Name*</label>
                 <input
-                  type="number"
-                  name="diamond_price"
-                  value={formData.diamond_price}
+                  type="text"
+                  name="name"
+                  value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none"
-                  placeholder="Enter donation amount"
+                  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+                  placeholder="Enter your name"
                 />
-                {errors.diamond_price && (
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block font-medium">Email*</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+                  placeholder="Enter your email"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block font-medium">Phone*</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+                  placeholder="10 digit phone number"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+              </div>
+
+              {/* Package */}
+              <div>
+                <label className="block font-medium">Package*</label>
+                <select
+                  name="package_type"
+                  value={formData.package_type}
+                  onChange={handleInputChange}
+                  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+                >
+                  <option value="">-- Select Package --</option>
+                  {packages.map((pkg) => (
+                    <option key={pkg.id} value={pkg.name}>
+                      {pkg.name} (₹{parseInt(pkg.price).toLocaleString()})
+                    </option>
+                  ))}
+                </select>
+                {errors.package_type && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.diamond_price}
+                    {errors.package_type}
                   </p>
                 )}
               </div>
-            )}
 
-            {/* Persons */}
-            <div>
-              <label className="block font-medium">Number of Persons</label>
-              <input
-                type="number"
-                name="persons"
-                min="1"
-                max="10"
-                value={formData.persons}
-                onChange={handleInputChange}
-                className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-              />
-              {errors.persons && (
-                <p className="text-red-500 text-sm mt-1">{errors.persons}</p>
+              {/* Diamond input */}
+              {formData.package_type.toLowerCase().includes("diamond") && (
+                <div>
+                  <label className="block font-medium">
+                    Enter Donation Amount*
+                  </label>
+                  <input
+                    type="number"
+                    name="diamond_price"
+                    value={formData.diamond_price}
+                    onChange={handleInputChange}
+                    className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-pink-400 outline-none"
+                    placeholder="Enter donation amount"
+                  />
+                  {errors.diamond_price && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.diamond_price}
+                    </p>
+                  )}
+                </div>
               )}
-            </div>
 
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-lg transform hover:scale-105 transition duration-300"
-            >
-              Continue →
-            </button>
-          </form>
-        </div>
+              {/* Persons */}
+              <div>
+                <label className="block font-medium">Number of Persons</label>
+                <input
+                  type="number"
+                  name="persons"
+                  min="1"
+                  max="10"
+                  value={formData.persons}
+                  onChange={handleInputChange}
+                  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+                />
+                {errors.persons && (
+                  <p className="text-red-500 text-sm mt-1">{errors.persons}</p>
+                )}
+              </div>
 
-        {/* Package Description Section */}
-        {selectedPackage && (
-          <div
-            className="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl md:w-1/2"
-            data-aos="fade-left"
-          >
-            <h3 className="text-2xl font-bold text-orange-600 mb-4">
-              {selectedPackage.name}
-            </h3>
-
-            {/* Description ko points me todh ke show karna */}
-            {selectedPackage.description ? (
-              <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                {selectedPackage.description.split(",").map((point, index) => (
-                  <li key={index} className="leading-relaxed">
-                    {point.trim()}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-700">No description available.</p>
-            )}
-
-            <div className="mt-4 text-lg font-semibold text-pink-600">
-              Price: ₹{parseInt(selectedPackage.price).toLocaleString()}
-            </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-lg font-semibold text-lg shadow-lg transform hover:scale-105 transition duration-300"
+              >
+                Continue →
+              </button>
+            </form>
           </div>
-        )}
+
+          {/* Package Description Section */}
+          {selectedPackage && (
+            <div
+              className="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl w-full md:w-1/2"
+              data-aos="fade-left"
+            >
+              <h3 className="text-2xl font-bold text-orange-600 mb-4">
+                {selectedPackage.name}
+              </h3>
+
+              {/* Description in points */}
+              {selectedPackage.description ? (
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  {selectedPackage.description.split(",").map((point, index) => (
+                    <li key={index} className="leading-relaxed">
+                      {point.trim()}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-700">No description available.</p>
+              )}
+
+              <div className="mt-4 text-lg font-semibold text-pink-600">
+                Price: ₹{parseInt(selectedPackage.price).toLocaleString()}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

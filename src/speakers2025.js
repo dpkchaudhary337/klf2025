@@ -34,6 +34,7 @@ import rouble from "./assets/speakers/2025/rouble.png";
 import jash from "./assets/speakers/2025/jash.png";
 import prashant from "./assets/speakers/2025/prashant.png";
 import rami_desai from "./assets/speakers/2025/rami_desai.jpg";
+import khwaza from "./assets/speakers/2025/khwaza.jpg";
 
 const speakers = [
   { id: 21 , name: "Shri. Manoj Sinha", role: "Hon’ble Lt. Governor UT of J&K", topic: "CHIEF GUEST", image: manoj_sinha },
@@ -68,6 +69,7 @@ const speakers = [
   { id: 52 , name: "Smt. Rouble Nagi", role: "Artist & Author", topic: "", image: rouble },
   { id: 53 , name: "Shri. Jash Dholani", role: "Author", topic: "", image: jash },
   { id: 54 , name: "Shri. Prashant Talnikar", role: "Author", topic: "", image: prashant },
+  { id: 55 , name: "Dr. Khwaza Farooz Renzushah", role: "Author. Chairman- Kashmir Society International", topic: "", image: khwaza },
 
   
 ];

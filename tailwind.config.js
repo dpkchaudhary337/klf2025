@@ -20,7 +20,7 @@ export default {
         scrollSm: "scroll 20s linear infinite",
         scrollSmInspire: "scroll 8s linear infinite",
         fadeIn: "fadeIn 3s ease-out",
-        marquee: "marquee 12s linear infinite",
+        marquee: "marquee 18s linear infinite",
         slideIn: "slideIn 1s ease-out",
         scrollGallery: "scrollGallery 30s linear infinite",
         "slow-spin": "spin 10s linear infinite",

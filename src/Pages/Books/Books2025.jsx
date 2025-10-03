@@ -14,6 +14,8 @@ import Shaitan from "../../assets/Books/2025/Shaitan.jpg";
 import slumQueen from "../../assets/Books/2025/slumQueen.jpg";
 import soldier from "../../assets/Books/2025/soldier.jpg";
 import why from "../../assets/Books/2025/why.jpg";
+import shadesofsaffron from "../../assets/Books/2025/shadesofsaffron.jpg";
+import Sultana_Kota_Rani from "../../assets/Books/2025/Sultana_Kota_Rani.jpg";
 
 export const Books2025 = () => {
   const images = [
@@ -32,12 +34,16 @@ export const Books2025 = () => {
     slumQueen,
     soldier,
     why,
+    shadesofsaffron,
+    Sultana_Kota_Rani,
   ];
 
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const handleNext = () => setSelectedIndex((prev) => (prev + 1) % images.length);
-  const handlePrev = () => setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
+  const handleNext = () =>
+    setSelectedIndex((prev) => (prev + 1) % images.length);
+  const handlePrev = () =>
+    setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <>
@@ -54,7 +60,7 @@ export const Books2025 = () => {
           </div>
 
           {/* Book Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
             {images.map((src, i) => (
               <div
                 key={i}

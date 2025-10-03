@@ -27,11 +27,13 @@ import AboutKLF25 from "./components/AboutUs/About";
 import Registration from "./components/Registration/Registration";
 import AttendeeDetails from "./components/Registration/AttendeeDetails";
 import PaymentSuccess from "./components/Registration/PaymentSuccess";
+import VerifyTicket from "./components/Registration/VerifyTicket";
 
 import NotFound from "./Pages/NotFound";
 import Privacy from "./Pages/privacypolicy";
 import RefundPolicy from "./Pages/refundpolicy";
 import Terms from "./Pages/terms";
+
 
 export default function App() {
   // 🔹 Initialize AOS
@@ -71,6 +73,7 @@ export default function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/attendee-details" element={<AttendeeDetails />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/verify-ticket" element={<VerifyTicket />} />
         </Route>
 
         {/* Agar galat URL ho */}

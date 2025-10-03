@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import China from "../../assets/Books/2025/China.jpg";
-import Eminent from "../../assets/Books/2025/Eminent.jpg";
+import shadesofsaffron from "../../assets/Books/2025/shadesofsaffron.jpg";
 import lalitAditya from "../../assets/Books/2025/lalitAditya.jpg";
 import Reflection from "../../assets/Books/2025/Reflection.jpg";
 import Shaitan from "../../assets/Books/2025/Shaitan.jpg";
+import Sultana_Kota_Rani from "../../assets/Books/2025/Sultana_Kota_Rani.jpg";
+
 import { Link } from "react-router-dom";
 
 export const BooksPreview2025 = () => {
-  const images = [China, Eminent, lalitAditya, Reflection, Shaitan];
+  const images = [China, shadesofsaffron, lalitAditya, Reflection, Shaitan, Sultana_Kota_Rani];
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleNext = () => {
@@ -35,7 +37,7 @@ export const BooksPreview2025 = () => {
           </div>
 
           {/* Book Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
             {images.map((src, i) => (
               <div
                 key={i}
